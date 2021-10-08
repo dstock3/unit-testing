@@ -1,11 +1,19 @@
-import { capitalize, reverseString, calculator, analyze } from './index'
+import { capitalize, reverseString, calculator, analyze, caesar } from './index'
 
 test('capitalize the first letter of a string', () => {
     expect(capitalize("david")).toBe("David");
 });
 
+test('works with spaces', () => {
+    expect(capitalize('the first letter of this sentence should be capitalized.')).toBe('The first letter of this sentence should be capitalized.')
+});
+
 test('takes a string and returns it reversed', () => {
     expect(reverseString("mittens")).toBe("snettim");
+});
+
+test('works with long strings', () => {
+    expect(reverseString("there is hope, but not for us")).toBe("su rof ton tub ,epoh si ereht");
 });
 
 test('reverse a string and make sure it works on palindromes', () => {
