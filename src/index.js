@@ -32,4 +32,21 @@ const analyze = (newArray) => {
     return newObj(average, min, max, length)
 }
 
-export { capitalize, reverseString, calculator, analyze }
+const caesar = (string, shift) => {
+    let stringArray = string.split("");
+    let alphabet = "abcdefghijklmnopqrstuvwxyz";
+    let alphabetArray = alphabet.split("");
+    let newArray = [];
+    for (let i = 0; i < stringArray.length; i++) {
+        for (let y = 0; y < alphabetArray.length; y++) {
+            if (stringArray[i] === alphabetArray[y]) {
+                newArray.push(alphabetArray[y + shift])
+            };
+        };
+        
+    };
+    let newString = newArray.join("");
+    return newString
+}
+
+export { capitalize, reverseString, calculator, analyze, caesar }
