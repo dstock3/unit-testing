@@ -64,5 +64,13 @@ test('shift 1', () => {
 
 test('shift 2', () => {
     expect(caesar("mittens", 2)).toBe("okvvgpu")
-})
+});
+
+test('shift 7', () => {
+    expect(caesar("mittens", 7)).toBe("tpaaluz")
+});
+
+test('works with punctuation', () => {
+    expect(caesar("jerry, hello.", 3)).toBe("mhuub, khoor.");
+});
 
