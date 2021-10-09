@@ -36,14 +36,26 @@ const caesar = (string, shift) => {
     let stringArray = string.split("");
     let alphabet = "abcdefghijklmnopqrstuvwxyz";
     let alphabetArray = alphabet.split("");
+    let punctuation = ".,;()-";
+    let punctArray = punctuation.split("");
     let newArray = [];
     for (let i = 0; i < stringArray.length; i++) {
-        for (let y = 0; y < alphabetArray.length; y++) {
-            if (stringArray[i] === alphabetArray[y]) {
-                newArray.push(alphabetArray[y + shift])
-            };
+        if (stringArray[i] === " ") {
+            newArray.push(" ");
         };
         
+        for (let y = 0; y < punctArray.length; y++) {
+            if (newArray[i] === punctArray[y]) {
+                newArray.push(punctArray[y])
+            };
+        };
+
+        for (let y = 0; y < alphabetArray.length; y++) {
+            if (stringArray[i] === alphabetArray[y]) {
+                newArray.push(alphabetArray[y + shift]);
+            };
+
+        };
     };
     let newString = newArray.join("");
     return newString
