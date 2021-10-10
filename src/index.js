@@ -36,9 +36,9 @@ const caesar = (string, shift) => {
     let stringArray = string.split("");
     let alphabet = "abcdefghijklmnopqrstuvwxyz";
     let alphabetArray = alphabet.split("");
-    let punctuation = ".,;()-";
+    let punctuation = ".,;()-—'’";
     let punctArray = punctuation.split("");
-    let newArray = [];
+    let newArray = []; 
     for (let i = 0; i < stringArray.length; i++) {
         
         if (stringArray[i] === " ") {
@@ -71,6 +71,7 @@ const caesar = (string, shift) => {
                     };
                 };
             } else {
+                let difference = shift;
                 let alphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz";
                 let alphabetArray = alphabet.split("");
                 if (letter === alphabetArray[y]) {
