@@ -53,16 +53,33 @@ const caesar = (string, shift) => {
 
         for (let y = 0; y < alphabetArray.length; y++) {
             let position = y + shift
+            let letter = stringArray[i]
+            let isCapitalized = false;
+
+            if (letter === stringArray[i].toUpperCase()) {
+                letter = stringArray[i].toLowerCase();
+                isCapitalized = true
+            }
             
             if (alphabetArray[position] !== undefined) {
-                if (stringArray[i] === alphabetArray[y]) {
-                    newArray.push(alphabetArray[y + shift]);
+                if (letter === alphabetArray[y]) {
+                    if (isCapitalized) {
+                        let capitalizedLetter = alphabetArray[position].toUpperCase();
+                        newArray.push(capitalizedLetter);
+                    } else {
+                        newArray.push(alphabetArray[position]);
+                    };
                 };
             } else {
                 let alphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz";
                 let alphabetArray = alphabet.split("");
-                if (stringArray[i] === alphabetArray[y]) {
-                    newArray.push(alphabetArray[y + shift]);
+                if (letter === alphabetArray[y]) {
+                    if (isCapitalized) {
+                        let capitalizedLetter = alphabetArray[position].toUpperCase();
+                        newArray.push(capitalizedLetter);
+                    } else {
+                        newArray.push(alphabetArray[position]);
+                    };
                 };
             };
         };
