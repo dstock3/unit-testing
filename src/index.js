@@ -87,10 +87,9 @@ const caesar = (string, shift) => {
                     };
                 };
             } else {
-                let difference = shift - 26;
-                if (difference > 0) {
-                    let scope = difference / 26;
-                    let newAlphabet = alphabet.repeat(scope) ;
+                let difference = shift / 26;
+                if (difference > 1) {
+                    let newAlphabet = alphabet.repeat(difference + 2);
                     pushLetter(letter, newAlphabet, position, y, isCapitalized);
                 } else {
                     let newAlphabet = alphabet + alphabet;
