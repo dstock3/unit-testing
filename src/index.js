@@ -32,13 +32,29 @@ const analyze = (newArray) => {
     return newObj(average, min, max, length)
 }
 
+
+
 const caesar = (string, shift) => {
     let stringArray = string.split("");
     let alphabet = "abcdefghijklmnopqrstuvwxyz";
     let alphabetArray = alphabet.split("");
-    let punctuation = ".,;()-";
+    let punctuation = ".,;()-—'’";
     let punctArray = punctuation.split("");
     let newArray = [];
+    
+    function pushLetter(letter, newAlphabet, position, index, capitalized) {
+        let alphabetArray = newAlphabet.split("");
+    
+        if (letter === alphabetArray[index]) {
+            if (capitalized) {
+                let capitalizedLetter = alphabetArray[position].toUpperCase();
+                newArray.push(capitalizedLetter);
+            } else {
+                newArray.push(alphabetArray[position]);
+            };
+        };  
+    };
+
     for (let i = 0; i < stringArray.length; i++) {
         
         if (stringArray[i] === " ") {
@@ -53,10 +69,31 @@ const caesar = (string, shift) => {
 
         for (let y = 0; y < alphabetArray.length; y++) {
             let position = y + shift
+            let letter = stringArray[i]
+            let isCapitalized = false;
+
+            if (letter === stringArray[i].toUpperCase()) {
+                letter = stringArray[i].toLowerCase();
+                isCapitalized = true
+            }
             
             if (alphabetArray[position] !== undefined) {
-                if (stringArray[i] === alphabetArray[y]) {
-                    newArray.push(alphabetArray[y + shift]);
+                if (letter === alphabetArray[y]) {
+                    if (isCapitalized) {
+                        let capitalizedLetter = alphabetArray[position].toUpperCase();
+                        newArray.push(capitalizedLetter);
+                    } else {
+                        newArray.push(alphabetArray[position]);
+                    };
+                };
+            } else {
+                let difference = shift / 26;
+                if (difference > 1) {
+                    let newAlphabet = alphabet.repeat(difference + 2);
+                    pushLetter(letter, newAlphabet, position, y, isCapitalized);
+                } else {
+                    let newAlphabet = alphabet + alphabet;
+                    pushLetter(letter, newAlphabet, position, y, isCapitalized);
                 };
             };
         };
