@@ -74,6 +74,10 @@ test('shift 9', () => {
     expect(caesar("mittens", 9)).toBe("vrccnwb")
 });
 
+test('works with an extremely high shift', () => {
+    expect(caesar("mittens", 100)).toBe("ieppajo")
+});
+
 test('works with punctuation and capitalized letters', () => {
     expect(caesar("Jerry, hello.", 3)).toBe("Mhuub, khoor.");
 });

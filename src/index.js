@@ -32,13 +32,29 @@ const analyze = (newArray) => {
     return newObj(average, min, max, length)
 }
 
+
+
 const caesar = (string, shift) => {
     let stringArray = string.split("");
     let alphabet = "abcdefghijklmnopqrstuvwxyz";
     let alphabetArray = alphabet.split("");
     let punctuation = ".,;()-—'’";
     let punctArray = punctuation.split("");
-    let newArray = []; 
+    let newArray = [];
+    
+    function pushLetter(letter, newAlphabet, position, index, capitalized) {
+        let alphabetArray = newAlphabet.split("");
+    
+        if (letter === alphabetArray[index]) {
+            if (capitalized) {
+                let capitalizedLetter = alphabetArray[position].toUpperCase();
+                newArray.push(capitalizedLetter);
+            } else {
+                newArray.push(alphabetArray[position]);
+            };
+        };  
+    };
+
     for (let i = 0; i < stringArray.length; i++) {
         
         if (stringArray[i] === " ") {
@@ -71,16 +87,14 @@ const caesar = (string, shift) => {
                     };
                 };
             } else {
-                let difference = shift;
-                let alphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz";
-                let alphabetArray = alphabet.split("");
-                if (letter === alphabetArray[y]) {
-                    if (isCapitalized) {
-                        let capitalizedLetter = alphabetArray[position].toUpperCase();
-                        newArray.push(capitalizedLetter);
-                    } else {
-                        newArray.push(alphabetArray[position]);
-                    };
+                let difference = shift - 26;
+                if (difference > 0) {
+                    let scope = difference / 26;
+                    let newAlphabet = alphabet.repeat(scope) ;
+                    pushLetter(letter, newAlphabet, position, y, isCapitalized);
+                } else {
+                    let newAlphabet = alphabet + alphabet;
+                    pushLetter(letter, newAlphabet, position, y, isCapitalized);
                 };
             };
         };
