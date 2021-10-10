@@ -40,21 +40,25 @@ const caesar = (string, shift) => {
     let punctArray = punctuation.split("");
     let newArray = [];
     for (let i = 0; i < stringArray.length; i++) {
+        
         if (stringArray[i] === " ") {
             newArray.push(" ");
         };
         
         for (let y = 0; y < punctArray.length; y++) {
-            if (newArray[i] === punctArray[y]) {
-                newArray.push(punctArray[y])
+            if (stringArray[i] === punctArray[y]) {
+                newArray.push(punctArray[y]);
             };
         };
 
         for (let y = 0; y < alphabetArray.length; y++) {
-            if (stringArray[i] === alphabetArray[y]) {
-                newArray.push(alphabetArray[y + shift]);
+            let position = y + shift
+            
+            if (alphabetArray[position] !== undefined) {
+                if (stringArray[i] === alphabetArray[y]) {
+                    newArray.push(alphabetArray[y + shift]);
+                };
             };
-
         };
     };
     let newString = newArray.join("");
