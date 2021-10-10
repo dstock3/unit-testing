@@ -58,6 +58,12 @@ const caesar = (string, shift) => {
                 if (stringArray[i] === alphabetArray[y]) {
                     newArray.push(alphabetArray[y + shift]);
                 };
+            } else {
+                let alphabet = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz";
+                let alphabetArray = alphabet.split("");
+                if (stringArray[i] === alphabetArray[y]) {
+                    newArray.push(alphabetArray[y + shift]);
+                };
             };
         };
     };

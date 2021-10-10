@@ -70,6 +70,11 @@ test('shift 7', () => {
     expect(caesar("mittens", 7)).toBe("tpaaluz")
 });
 
+test('shift 9', () => {
+    expect(caesar("mittens", 9)).toBe("vrccnwb")
+});
+
+
 test('works with punctuation', () => {
     expect(caesar("jerry, hello.", 3)).toBe("mhuub, khoor.");
 });
